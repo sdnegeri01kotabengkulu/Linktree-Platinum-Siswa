@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Portal Akses - PLATINUM SDN 01</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Fredoka One', 'cursive']
+                    },
+                    colors: { 
+                        primary: '#1e3a8a', /* Blue 900 */
+                        secondary: '#3b82f6', /* Blue 500 */
+                        accent: '#bfdbfe' /* Blue 200 */
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Animasi Gradient Mesh Background Dominan Putih-Biru */
+        body {
+            /* Perpaduan putih murni, putih kebiruan, biru langit cerah */
+            background: linear-gradient(-45deg, #ffffff, #eff6ff, #dbeafe, #bfdbfe);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Blobs Bergerak Dinamis - Nuansa Biru Ceria */
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.5;
+            animation: moveBlob 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .blob-1 { top: -10%; left: -10%; width: 400px; height: 400px; background: #93c5fd; } /* Biru Cerah */
+        .blob-2 { bottom: -10%; right: -10%; width: 500px; height: 500px; background: #60a5fa; animation-delay: -5s; } /* Biru Langit */
+        .blob-3 { top: 40%; left: 50%; width: 300px; height: 300px; background: #38bdf8; animation-delay: -10s; transform: translate(-50%, -50%); } /* Biru Muda (Cyan) */
+
+        @keyframes moveBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        /* Glassmorphism Card Style - Lembut dan Elegan */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.08), 0 8px 10px -6px rgba(37, 99, 235, 0.04);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform-style: preserve-3d;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 25px 40px -10px rgba(37, 99, 235, 0.2), 0 15px 15px -10px rgba(56, 189, 248, 0.15);
+            border: 2px solid rgba(255, 255, 255, 1);
+        }
+
+        .glass-icon-wrapper {
+            transform: translateZ(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .glass-card:hover .glass-icon-wrapper {
+            transform: translateZ(35px) scale(1.15) rotate(-5deg);
+        }
+
+        /* Entrance Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpAnim 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeUpAnim {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body class="flex flex-col items-center py-12 px-5 sm:px-6">
+
+    <!-- Latar Belakang Dinamis -->
+    <div class="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div class="blob blob-1 rounded-full"></div>
+        <div class="blob blob-2 rounded-full"></div>
+        <div class="blob blob-3 rounded-full"></div>
+        <!-- Pola Titik Elegan - Biru Transparan -->
+        <div class="absolute inset-0" style="background-image: radial-gradient(rgba(37, 99, 235, 0.08) 2px, transparent 2px); background-size: 24px 24px;"></div>
+    </div>
+
+    <div class="w-full max-w-md relative z-10 perspective-container">
+        
+        <!-- Header & Profile -->
+        <div class="text-center mb-10 fade-up stagger-1">
+            <div class="w-32 h-32 mx-auto bg-white/90 backdrop-blur-md rounded-full p-2 shadow-2xl shadow-blue-500/20 border-4 border-white mb-5 relative transition-transform duration-500 hover:scale-105">
+                <img src="https://i.ibb.co.com/99s1pN2R/logo-sd1.png" alt="Logo SDN 01" class="w-full h-full object-contain rounded-full drop-shadow-md">
+                <div class="absolute bottom-0 right-0 w-8 h-8 bg-blue-500 border-[3px] border-white rounded-full flex items-center justify-center text-white text-xs shadow-md" title="Sistem Aktif">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+            </div>
+            <h1 class="text-4xl font-display text-slate-800 tracking-wide mb-1 drop-shadow-sm">PLATINUM</h1>
+            <p class="text-[11px] font-extrabold text-blue-600 tracking-[0.25em] uppercase mb-4 bg-white/60 backdrop-blur-sm inline-block px-4 py-1 rounded-full shadow-sm border border-blue-100">SDN 01 Kota Bengkulu</p>
+            <p class="text-sm text-slate-600 font-medium max-w-[280px] mx-auto leading-relaxed">Pusat integrasi program Literasi dan Numerasi Unggul berbasis digital yang interaktif.</p>
+        </div>
+
+        <!-- Tombol Linktree -->
+        <div class="space-y-5">
+            
+            <!-- Link 1: Website Utama -->
+            <a href="https://script.google.com/macros/s/AKfycbyaDi8kuLaalP6zbaSn6v4BNIB1YNksSOlAJnvv5WwBR0_AsDpePzUCq86NvX2aMomH/exec" class="glass-card tilt-element block w-full rounded-3xl p-5 relative group fade-up stagger-2 overflow-hidden">
+                <div class="flex items-center gap-4">
+                    <div class="glass-icon-wrapper w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-400 to-blue-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-blue-500/30 border border-blue-300">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <div class="transform translate-z-10">
+                        <h3 class="font-bold text-slate-800 text-lg mb-0.5">Website Utama</h3>
+                        <p class="text-[11px] text-slate-500 font-medium leading-tight">Portal Informasi, Karya & E-Library</p>
+                    </div>
+                    <div class="ml-auto w-10 h-10 rounded-full flex items-center justify-center bg-blue-50 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors shadow-sm border border-blue-100">
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Link 2: Arena Bermain Numerasi -->
+            <a href="https://script.google.com/macros/s/AKfycbyaDi8kuLaalP6zbaSn6v4BNIB1YNksSOlAJnvv5WwBR0_AsDpePzUCq86NvX2aMomH/exec?page=game" class="glass-card tilt-element block w-full rounded-3xl p-5 relative group fade-up stagger-3 overflow-hidden">
+                <div class="flex items-center gap-4">
+                    <div class="glass-icon-wrapper w-14 h-14 rounded-2xl bg-gradient-to-tr from-sky-400 to-sky-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-sky-500/30 border border-sky-300">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <div class="transform translate-z-10">
+                        <h3 class="font-bold text-slate-800 text-lg mb-0.5">Game Numerasi</h3>
+                        <p class="text-[11px] text-slate-500 font-medium leading-tight">Arena Bermain & Belajar Matematika</p>
+                    </div>
+                    <div class="ml-auto w-10 h-10 rounded-full flex items-center justify-center bg-sky-50 text-sky-500 group-hover:bg-sky-500 group-hover:text-white transition-colors shadow-sm border border-sky-100">
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Link 3: Peduli Teman -->
+            <a href="https://script.google.com/macros/s/AKfycbyaDi8kuLaalP6zbaSn6v4BNIB1YNksSOlAJnvv5WwBR0_AsDpePzUCq86NvX2aMomH/exec?page=peduliteman" class="glass-card tilt-element block w-full rounded-3xl p-5 relative group fade-up stagger-4 overflow-hidden">
+                <div class="flex items-center gap-4">
+                    <div class="glass-icon-wrapper w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-400 to-indigo-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-indigo-500/30 border border-indigo-300">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="transform translate-z-10">
+                        <h3 class="font-bold text-slate-800 text-lg mb-0.5">Peduli Teman</h3>
+                        <p class="text-[11px] text-slate-500 font-medium leading-tight">Mading Edukasi & Interaksi Siswa</p>
+                    </div>
+                    <div class="ml-auto w-10 h-10 rounded-full flex items-center justify-center bg-indigo-50 text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white transition-colors shadow-sm border border-indigo-100">
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Divider -->
+            <div class="w-full flex items-center justify-center pt-5 pb-3 fade-up stagger-5">
+                <div class="h-[2px] bg-blue-300/30 w-full rounded-full"></div>
+                <span class="px-4 text-[10px] uppercase font-extrabold text-blue-500/70 tracking-[0.2em] bg-transparent whitespace-nowrap">Khusus Guru</span>
+                <div class="h-[2px] bg-blue-300/30 w-full rounded-full"></div>
+            </div>
+
+            <!-- Link 4: Panel Admin -->
+            <a href="https://script.google.com/macros/s/AKfycbyaDi8kuLaalP6zbaSn6v4BNIB1YNksSOlAJnvv5WwBR0_AsDpePzUCq86NvX2aMomH/exec?page=admin" class="glass-card tilt-element block w-full rounded-3xl p-5 relative group fade-up stagger-6 overflow-hidden">
+                <div class="flex items-center gap-4">
+                    <div class="glass-icon-wrapper w-14 h-14 rounded-2xl bg-gradient-to-tr from-slate-500 to-slate-600 text-white flex items-center justify-center text-2xl shadow-lg shadow-slate-500/30 border border-slate-400">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div class="transform translate-z-10">
+                        <h3 class="font-bold text-slate-800 text-lg mb-0.5">Administrator</h3>
+                        <p class="text-[11px] text-slate-500 font-medium leading-tight">Pusat Kendali Sistem & Database</p>
+                    </div>
+                    <div class="ml-auto w-10 h-10 rounded-full flex items-center justify-center bg-slate-50 text-slate-600 group-hover:bg-slate-600 group-hover:text-white transition-colors shadow-sm border border-slate-200">
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer Sosmed -->
+        <div class="mt-14 text-center fade-up stagger-6">
+            <p class="text-[10px] font-extrabold text-slate-500 uppercase tracking-[0.2em] mb-4">Terhubung Dengan Kami</p>
+            <div class="flex justify-center gap-4">
+                <a href="https://www.facebook.com/share/1E4sBRCqBX/?mibextid=wwXIfr" target="_blank" class="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-blue-600 shadow-sm border border-white flex items-center justify-center text-lg hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:shadow-blue-500/30 transition duration-300">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/sdn_01_kota_bengkulu_?igsh=NXUyY2ZjMzI0dTRm" target="_blank" class="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-blue-600 shadow-sm border border-white flex items-center justify-center text-lg hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:shadow-blue-500/30 transition duration-300">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/@bengkulusdnegeri1?si=zfIQpUkLIvqGR7Sq" target="_blank" class="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-blue-600 shadow-sm border border-white flex items-center justify-center text-lg hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:shadow-blue-500/30 transition duration-300">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://www.tiktok.com/@sdnegeri1bengkulu?_r=1&_t=ZS-95junW2vl7A" target="_blank" class="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-blue-600 shadow-sm border border-white flex items-center justify-center text-lg hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:shadow-blue-500/30 transition duration-300">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+            </div>
+            <p class="text-[10px] text-slate-500 mt-8 font-bold tracking-widest">&copy; 2026 SDN 01 KOTA BENGKULU</p>
+        </div>
+
+    </div>
+
+    <!-- Script Interaksi 3D Animasi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tiltElements = document.querySelectorAll('.tilt-element');
+            
+            tiltElements.forEach(el => {
+                el.addEventListener('mousemove', (e) => {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = ((y - centerY) / centerY) * -8; // Rotasi maksimal 8 derajat
+                    const rotateY = ((x - centerX) / centerX) * 8;
+                    
+                    el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
